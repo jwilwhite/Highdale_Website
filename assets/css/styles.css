@@ -364,6 +364,7 @@ body.menu-open { overflow: hidden; }
   letter-spacing: -0.02em;
   font-variant-numeric: lining-nums;
 }
+.stat__num { display: inline-block; text-align: right; font-variant-numeric: lining-nums tabular-nums; }
 .stat__value sup {
   font-size: 0.32em;
   line-height: 1;
