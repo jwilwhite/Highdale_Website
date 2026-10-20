@@ -4,6 +4,7 @@
 :root {
   --slate: #52596b;
   --white: #ffffff;
+  --peach: #e8a385;
   --margin: clamp(16px, 2.6vw, 50px);
 }
 
@@ -72,7 +73,14 @@ body {
   letter-spacing: 0.02em;
 }
 
-.status { margin: 0; color: rgba(255, 255, 255, 0.72); }
+.status {
+  margin: 0;
+  color: var(--peach);
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
 
 .email {
   color: var(--white);
