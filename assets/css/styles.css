@@ -61,12 +61,21 @@ body {
   opacity: 0.32;
 }
 
-.email {
-  align-self: flex-end;
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 8px clamp(20px, 2.5vw, 40px);
   margin-top: clamp(16px, 2vw, 28px);
-  color: var(--white);
   font-size: clamp(14px, 1.1vw, 18px);
   letter-spacing: 0.02em;
+}
+
+.status { margin: 0; color: rgba(255, 255, 255, 0.72); }
+
+.email {
+  color: var(--white);
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding-bottom: 2px;
