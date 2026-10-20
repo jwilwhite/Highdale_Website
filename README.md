@@ -1,9 +1,9 @@
 # Highdale website
 
-Static site (HTML/CSS/JS, no build step). Open `index.html` in a browser, or serve the folder with any static host.
+Single static holding page (HTML and CSS, no build step, no JavaScript), matching the HighdaleWeb artwork.
 
-- `assets/css/styles.css`: brand tokens (Highdale Brand Guidelines, August 2026) and all layout
-- `assets/js/main.js`: menu overlay
-- `assets/img/`: wordmark and H stamp, extracted as vectors from the brand guidelines PDF
+- `index.html`: the page
+- `assets/css/styles.css`: layout and brand colours
+- `assets/img/`: white wordmark, pattern H and favicon, extracted as vectors from the Highdale artwork
 
-Search for `TODO` and `[` placeholders before launch: stats figures, contact details, story copy, articles, form handler and imagery.
+The earlier multi-page site is in the git history (commit `36789f5`) if it is needed again.
