@@ -28,18 +28,25 @@ body {
   overflow: hidden;
 }
 
-/* H stamp pattern: an odd column count makes H and dot alternate like a checkerboard. */
+/* H stamp pattern: an odd column count makes H and dot alternate like a checkerboard.
+   Rows shown depend on screen height; extra items are hidden. */
 .pattern {
+  --cols: 13;
+  --rows: 2;
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(13, auto);
-  grid-template-rows: repeat(5, auto);
+  grid-template-columns: repeat(var(--cols), auto);
+  grid-template-rows: repeat(var(--rows), auto);
   justify-content: space-between;
   align-content: space-between;
+  align-items: center;
   justify-items: center;
-  min-height: 260px;
-  margin-bottom: clamp(48px, 7vw, 120px);
+  min-height: 90px;
 }
+.pattern > :nth-child(n + 27) { display: none; }
+
+/* Mirror the lower block so its last row is an H row, like the first row above. */
+.pattern--below, .pattern--below > * { transform: scaleY(-1); }
 
 .h {
   width: clamp(18px, 1.6vw, 26px);
@@ -49,9 +56,13 @@ body {
 .dot {
   width: 3px;
   height: 3px;
-  margin-top: clamp(7px, 0.7vw, 11px);
   border-radius: 50%;
   background: var(--white);
+}
+
+.centre {
+  margin: clamp(48px, 7vw, 112px) 0;
+  text-align: center;
 }
 
 .wordmark { margin: 0; }
@@ -62,36 +73,45 @@ body {
   opacity: 0.32;
 }
 
-.foot {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: baseline;
-  gap: 8px clamp(20px, 2.5vw, 40px);
-  margin-top: clamp(16px, 2vw, 28px);
-  font-size: clamp(14px, 1.1vw, 18px);
-  letter-spacing: 0.02em;
-}
-
 .status {
-  margin: 0;
+  margin: clamp(20px, 2.4vw, 40px) 0 0;
+  padding-left: 0.2em; /* balances the trailing letter-spacing so the text centres optically */
   color: var(--peach);
-  font-size: 0.85em;
+  font-size: clamp(24px, 3.2vw, 54px);
   font-weight: 500;
+  line-height: 1;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
-.email {
+.contact {
+  align-self: flex-end;
+  margin: clamp(16px, 2vw, 28px) 0 0;
+  font-size: clamp(14px, 1.1vw, 18px);
+  letter-spacing: 0.02em;
+}
+.contact a {
   color: var(--white);
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   padding-bottom: 2px;
 }
-.email:hover { border-bottom-color: var(--white); }
-.email:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+.contact a:hover { border-bottom-color: var(--white); }
+.contact a:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+
+@media (min-height: 1050px) {
+  .pattern { --rows: 3; }
+  .pattern > :nth-child(n + 27) { display: block; }
+}
 
 @media (max-width: 640px) {
-  .pattern { grid-template-columns: repeat(7, auto); grid-template-rows: repeat(9, auto); }
-  .pattern > :nth-child(n + 64) { display: none; }
+  .pattern { --cols: 7; --rows: 3; }
+  .centre { margin: 80px 0; }
+  .pattern > :nth-child(n + 22) { display: none; }
+}
+
+@media (max-width: 640px) and (min-height: 760px) {
+  .pattern { --rows: 4; }
+  .pattern > :nth-child(n + 22) { display: block; }
+  .pattern > :nth-child(n + 29) { display: none; }
 }
